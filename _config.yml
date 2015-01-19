@@ -1,0 +1,19 @@
+# Permalinks
+permalink:        pretty
+relative_permalinks: true
+
+# Setup
+title:            Tom's Various Bits of Junk
+tagline:          
+url:              
+paginate:         0
+baseurl:          /
+author:
+  name:           Tom Lee
+  url:            https://twitter.com/tjl
+  email:          thomas.j.lee@gmail.com
+
+# Custom vars
+version:          1.0.0
+github:
+  repo:           https://github.com/sbma44
