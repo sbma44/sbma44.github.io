@@ -53,7 +53,7 @@ When you first arrive, please ring the doorbell for **unit 2** and we will greet
 
 Our doors feature programmable keypad locks. **We will set the locks on the front and back door to the last four digits of your mobile phone number prior to your arrival**. To enter, simply enter those numbers, then turn the tumbler clockwise. When leaving, press the "Schlage" button at the top of the keypad and turn the tumbler counterclockwise. [Here's a video of it in action](https://www.youtube.com/watch?v=etNyAGugGss).
 
-You will need a key for the outer front door when entering from the front. We will give this to you when you arrive. If you forget this key, you can always come in the back. Just head up the spiral staircase. Our driveway has a large green shed, so it's easy to recognize the house from behind.
+You will need a key for the outer door when entering from the front. We will give this to you when you arrive. If you forget this key, you can always come in the back. Just head up the spiral staircase. Our driveway has a large green shed, so it's easy to recognize the house from behind.
 
 If you have questions about how any of this works, please let us know. We're counting on you to be careful to lock the premises whenever you leave. 
 
