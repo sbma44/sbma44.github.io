@@ -109,6 +109,6 @@ But if you want something different, here are a few suggestions:
 
 - In addition to its symphonic and operatic shows, the Kennedy Center hosts free performances every day on its [Millennium Stage](http://www.kennedy-center.org/programs/millennium/). Better still, the 80 bus runs right from our house to its front door (plan on a 45 minute ride, but don't worry about transfers). [Wooly Mammoth Theater](http://www.woollymammoth.net/) and [Synetic Theater Company](http://www.synetictheater.org/) also offers reliably great shows. The [9:30 Club](http://www.930.com/) is one of the country's best rock venues and the [Black Cat](http://www.blackcatdc.com/) offers cheap drinks in the Red Room and great shows upstairs.  The [Raven](http://www.yelp.com/biz/the-raven-grill-washington) is the city's best dive bar, but our neighborhood bar, [Showtime](http://www.yelp.com/biz/showtime-lounge-washington), runs a close second.
 
-## <a href="#emergencies" id="contact">Emergencies</a>
+## <a href="#emergencies" id="emergencies">Emergencies</a>
 
 Our phone numbers are included in the email that contained the URL to this page. If you encounter an emergency, dial 911. D.C.'s non-emergency assistance line is 311. We keep a fire extinguisher in the hallway closet on the bottom floor of the unit.
