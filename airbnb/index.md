@@ -28,7 +28,7 @@ The network name is **Guest Network** and the password is **airbnb2015** -- if y
 
 D.C. is served by three **airports**:
 
-- **Reagan National (DCA):** this is the closest and most convenient airport. Unless you have a lot of bags, you should take the Metro.
+- **Reagan National (DCA):** this is the closest and most convenient airport. Unless you have a lot of bags, you should take the Metro from here into the city.
 
 - **Dulles (IAD):** Metro's recently-opened Silver Line makes Dulles easier to get to, but until 2018 you will still have to pay to take a shuttle from the airport to the Wiehle station. Alternately, the 5A Metrobus will drop you at the Rosslyn or L'Enfant Plaza Metro stations. Shared-ride van service is available, but unless you are traveling alone, it's not much cheaper after tip than a taxi or Uber.
 
