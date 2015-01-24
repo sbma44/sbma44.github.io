@@ -126,7 +126,7 @@ D.C. has many great places to eat, and sites like [Eater DC](http://dc.eater.com
 
 - **Fast &amp; Easy:**  There are a few chain restaurants near the NoMa Metro -- specifically, a Perfect Pita, an Au Bon Pain, a Five Guys' Burgers and a Potbelly Sandwich shop. These cater to the lunchtime crowd, so be sure to check their hours before heading over.
 
-- **Vegetarian:** Of the above, Big Bear, Red Hen and El Camino are probably your best bets for vegetarian options that don't feel like afterthoughts.
+- **Vegetarian:** Of the above, Big Bear, Red Hen, El Camino and Red Toque are probably your best bets for vegetarian options that don't feel like afterthoughts.
 
 - **Places to Avoid:** We hate to say it, because it's a beautiful building and the closest restaurant to the house, but the [Firehouse](http://www.yelp.com/biz/washington-firehouse-washington) is quite bad: overpriced, with an unimaginative menu that is not well executed. Similarly, [Rustik](http://www.yelp.com/biz/rustik-tavern-washington) is beloved by the neighborhood as a pioneering business and community anchor, but its food is almost uniformly disappointing (it's still a wonderful space to share a beer, watch the game or enjoy drinks on the patio). Finally, be aware that the Harris Teeter's hot food bar has recently run afoul of D.C.'s health inspector. Those problems might well have been resolved, but we're steering clear for now.
 
