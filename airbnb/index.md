@@ -17,6 +17,7 @@ Welcome to D.C.! We're delighted to share our home with you. Here are some notes
 - [The cat](#cat)
 - [Getting around D.C.](#getting-around)
 - [Things to do](#sights)
+- [Eating in the Neighborhood](#eat)
 - [Emergency info](#emergencies)
 
 ## <a href="#internet" id="internet">Internet</a>
@@ -108,6 +109,26 @@ But if you want something different, here are a few suggestions:
 - Eat some Ethiopian food! D.C. has many great restaurants, but most of the region's best cheap international cuisine is in the suburbs. Ethiopian is the one big exception. [Zenebech](http://www.zenebechdc.com/) is walkable from our house and does a great job. For a more ornate presentation, consider [Dukem](http://dukemrestaurant.com/) on U Street--they often perform music and/or a coffee ceremony for guests.
 
 - In addition to its symphonic and operatic shows, the Kennedy Center hosts free performances every day on its [Millennium Stage](http://www.kennedy-center.org/programs/millennium/). Better still, the 80 bus runs right from our house to its front door (plan on a 45 minute ride, but don't worry about transfers). [Wooly Mammoth Theater](http://www.woollymammoth.net/) and [Synetic Theater Company](http://www.synetictheater.org/) also offers reliably great shows. The [9:30 Club](http://www.930.com/) is one of the country's best rock venues and the [Black Cat](http://www.blackcatdc.com/) offers cheap drinks in the Red Room and great shows upstairs.  The [Raven](http://www.yelp.com/biz/the-raven-grill-washington) is the city's best dive bar, but our neighborhood bar, [Showtime](http://www.yelp.com/biz/showtime-lounge-washington), runs a close second.
+
+## <a href="#eat" id="eat">Eating in the Neighborhood</a>
+
+D.C. has many great places to eat, and sites like [Eater DC](http://dc.eater.com/) can help you make a delicious itinerary ([here's their list of top restaurants](http://dc.eater.com/maps/the-38-essential-washington-restaurants-january-2015)). But if you just need to grab a bite in the neighborhood without too much hassle, here's what we recommend:
+
+- **Coffeeshops/Breakfast:** Just three blocks away, [Big Bear Cafe](http://www.bigbearcafe-dc.com/) is a charming coffeeshop and the business that started the area's revitalization. They pull off amazing feats in their tiny kitchen, but be ready for communal seating and waits on the weekend. [Windows Cafe](http://www.yelp.com/biz/windows-cafe-and-market-washington) is a bit less charming but also less prone to long lines. [Kafe Bohem](http://www.yelp.com/biz/kafe-bohem-washington-2) is a little further afield, but wonderful and still easily walkable.
+
+- **Takeout:** [DCity Smokehouse](http://dcitysmokehouse.com) has the city's best barbecue. [Jam Doung](http://www.yelp.com/biz/jam-doung-style-cuisine-washington) offers tasty Jamaican food out of an admittedly dingy storefront. [Meats &amp; Foods](http://www.meatsandfoods.com/) sells a small menu of housemade sausage sandwiches and nostalgia-inducing side dishes at good prices.
+
+- **Delivery:** D.C.'s delivery options are somewhat lacking. Two worthwhile exceptions: [Red Toque](http://www.yelp.com/biz/red-toque-caf%C3%A9-washington-2)'s delicious Pakistani offerings and [Aroi](http://www.yelp.com/biz/aroi-fine-thai-and-japanese-cuisine-washington)'s sushi and Thai dishes.
+
+- **Casual Dining:** [El Camino](http://www.yelp.com/biz/el-camino-washington-2) offers nice Mexican food in a pleasantly casual atmosphere. [Bistro Bohem](http://www.yelp.com/biz/bistro-bohem-washington)'s Czech menu is great. [Bacio](http://www.yelp.com/biz/bacio-pizzeria-washington) is not quite [the city's best pizza](http://dcist.com/2013/09/the_best_pizzas_in_dc.php), but it won't disappoint.
+
+- **Let's Get Fancy:** Two words: [Red Hen](http://theredhendc.com/). The neighborhood's finest restaurant is one of the city's best, offering delicious and thoughtful meals in a casual but classy atmosphere (keep an eye out for Sen. Cory Booker, who's a regular). Getting a reservation is tough these days, but you can often find luck as a walk-in, particularly if you're willing to eat at the bar. [El Camino](http://www.yelp.com/biz/el-camino-washington-2) is just around the corner and a fine backup option if the wait at Red Hen is too long.
+
+- **Fast &amp; Easy:**  There are a few chain restaurants near the NoMa Metro -- specifically, a Perfect Pita, an Au Bon Pain, a Five Guys' Burgers and a Potbelly Sandwich shop. These cater to the lunchtime crowd, so be sure to check their hours before heading over.
+
+- **Vegetarian:** Of the above, Big Bear, Red Hen and El Camino are probably your best bets for vegetarian options that don't feel like afterthoughts.
+
+- **Places to Avoid:** We hate to say it, because it's a beautiful building and the closest restaurant to the house, but the [Firehouse](http://www.yelp.com/biz/washington-firehouse-washington) is quite bad: overpriced, with an unimaginative menu that is not well executed. Similarly, [Rustik](http://www.yelp.com/biz/rustik-tavern-washington) is beloved by the neighborhood as a pioneering business and community anchor, but its food is almost uniformly disappointing (it's still a wonderful space to share a beer, watch the game or enjoy drinks on the patio). Finally, be aware that the Harris Teeter's hot food bar has recently run afoul of D.C.'s health inspector. Those problems might well have been resolved, but we're steering clear for now.
 
 ## <a href="#emergencies" id="emergencies">Emergencies</a>
 
