@@ -40,7 +40,7 @@ If you're **driving** to D.C., you will find our home very conveniently located,
 
 - **From the North** take the Baltimore-Washington Parkway into the city. As you come down a bridge that crosses train tracks, turn right onto Florida, then right onto Eckington Place, then left onto Q. *Watch your speed!* There are many speed cameras as you enter the city. The speed of traffic is not a good guide to how fast you should be traveling over that final stretch. Be sure to slow down once you pass the Washington Times building.
 
-- **From the South:** the directions are a bit more complicated, but it's just as close. [Here is the most direct route, with lots of pictures](/public/directions.pdf) (PDF, 14M). A simpler option is to follow signs to Union Station, then drive up North Capitol.
+- **From the South:** the directions are a bit more complicated, but it's just as close. [Here is the most direct route, with lots of pictures](/airbnb/directions-from-south/). A simpler option is to follow signs to Union Station, then drive up North Capitol.
 
 - **From the West:** Come in on I-66 and follow signs for 395 N. Then use the directions for approaching from the south.
 
