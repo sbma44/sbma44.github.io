@@ -17,7 +17,7 @@ Welcome to D.C.! We're delighted to share our home with you. Here are some notes
 - [The cat](#cat)
 - [Getting around D.C.](#getting-around)
 - [Things to do](#sights)
-- [Eating in the Neighborhood](#eat)
+- [Eating in the neighborhood](#eat)
 - [Emergency info](#emergencies)
 
 ## <a href="#internet" id="internet">Internet</a>
