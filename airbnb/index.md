@@ -46,7 +46,7 @@ If you're **driving** to D.C., you will find our home very conveniently located,
 
 ## <a href="#parking" id="parking">Parking</a>
 
-On-street parking is usually available. You will need to display our visitor parking pass on your dashboard. We keep this pass on the fridge -- [it looks like this](/public/parking-pass.png). Please be sure to return it to us. The closest paid lot is Atlantic Parking, about a five minute walk from the house. It's $5/day.
+On-street parking is usually available. You will need to display our visitor parking pass on your dashboard. We keep this pass on the fridge -- [it looks like this](/public/parking-pass.jpg). Please be sure to return it to us. The closest paid lot is Atlantic Parking, about a five minute walk from the house. It's $5/day.
 
 ## <a href="#keys" id="keys">Locks & Keys</a>
 
