@@ -22,7 +22,7 @@ Welcome to D.C.! We're delighted to share our home with you. Here are some notes
 
 ## <a href="#internet" id="internet">Internet</a>
 
-The network name is **Guest Network** and the password is **airbnb2015** -- if you ever have trouble with the connection, feel free to reboot the router by turning it off and on. The router is the black plastic device located just outside your room on the bookcase.
+The network name is **Q Continuum Guest** and the password is **airbnb2016** -- if you ever have trouble with the connection, feel free to reboot the router by turning it off and on. The router is the black plastic device located just outside your room on the bookcase.
 
 ## <a href="#travel" id="travel">Getting Here</a>
 
