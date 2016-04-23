@@ -52,7 +52,7 @@ On-street parking is usually available. You will need to display our visitor par
 
 When you first arrive, please ring the doorbell for **unit 2** and we will greet you. If for some reason we will not be home when you arrive, we will make arrangements beforehand to get you the key.
 
-Our doors feature programmable keypad locks. **We will set the locks on the front and rear door to the last four digits of your mobile phone number prior to your arrival**. To enter, simply enter those numbers, then turn the tumbler counterclockwise. When leaving, press the "Schlage" button at the top of the keypad and turn the tumbler clockwise. [Here's a video of it in action](https://www.youtube.com/watch?v=etNyAGugGss).
+Our doors feature programmable keypad locks. **We will set the locks on the front and rear door to the last four digits of your mobile phone number prior to your arrival**. To enter, simply enter those numbers, then turn the tumbler clockwise. When leaving, press the "Schlage" button at the top of the keypad and turn the tumbler clockwise. [Here's a video of it in action](https://www.youtube.com/watch?v=etNyAGugGss).
 
 You will need a key for the outer door when entering from the front. We will give this to you when you arrive. If you forget this key, you can always come in the rear entrance -- just head up the spiral staircase. Our driveway has a large brown shed, so it's easy to recognize the house from behind.
 
