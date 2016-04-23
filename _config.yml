@@ -6,7 +6,6 @@ relative_permalinks: true
 title:            Tom's Various Bits of Junk
 tagline:          
 url:              
-paginate:         0
 baseurl:          /
 author:
   name:           Tom Lee
