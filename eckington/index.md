@@ -44,7 +44,7 @@ On an individual basis, each neighborhood tends to try to forbid change -- peopl
 
 - On June 6 the ECA will vote on whether to pursue historic designation. Since the ECA has spent money to hire consultants to assist with the process, and since the meetings they have held on the subject have been uniformly pro-historic-designation, it is likely that the ECA's current membership will vote yes.
 
-- Once they do, the measure will be voted on by ANCs. Since the measure will slow development, we expect the ANCs to vote yes.
+- Once they do, the measure will be voted on by the ANC. Since the measure will slow development, we expect the ANC to vote yes.
 
 - Then the city's historic office will have to approve the application. This is likely since each new historic district expands the scope of that office's power.
 
