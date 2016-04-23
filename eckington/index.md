@@ -10,9 +10,7 @@ noindex: true
 
 The Eckington Civic Association is preparing to vote on whether to apply for historic designation. We think they're likely to vote yes, but that historic designation will be bad for Eckington and D.C. as a whole. If you agree, we hope you'll join us in voting against the application.
 
-Add your email and we'll send you updates as the process moves along:
-
-<iframe src="https://docs.google.com/forms/d/1ug8SydlTHgt1gGZgA6-moOGyl2sxqOfOub8mKXsfQHc/viewform?embedded=true" width="760" height="300" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+Add your email using the form at the bottom of this page and we'll send you updates as the process moves along.
 
 ## What does historic designation mean?
 
@@ -74,4 +72,4 @@ We didn't send postcard to everyone because it would have been really expensive 
 
 We will never use your email for anything except news on the historic designation process. Once the process is finished, we'll delete our records.
 
-<iframe src="https://docs.google.com/forms/d/1ug8SydlTHgt1gGZgA6-moOGyl2sxqOfOub8mKXsfQHc/viewform?embedded=true" width="760" height="300" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+<iframe src="https://docs.google.com/forms/d/1ug8SydlTHgt1gGZgA6-moOGyl2sxqOfOub8mKXsfQHc/viewform?embedded=true" width="760" height="500" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
