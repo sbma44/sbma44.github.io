@@ -42,7 +42,7 @@ On an individual basis, each neighborhood tends to try to forbid change -- peopl
 
 On May 2 the ECA leadership announced that the historic designation survey had been delayed, and that the process would be slowed to allow for more deliberation. The June 6 vote described below will now be a vote on whether to proceed with the historic designation process. If the measure passes, the survey will be issued and the process will proceed as described below. If it does not, historic designation will cease to be pursued by the ECA for the time being.
 
-It was also announced that voting on the June 6 measure can be done by proxy by emailing your vote to an ECA officer. I'm working now to confirm where such votes should be sent.
+It was also announced that voting on the June 6 measure can be done by proxy by emailing your vote to ECA Treasurer Lana Gowin: lcgowin@gmail.com
 
 ------
 
@@ -57,7 +57,7 @@ It was also announced that voting on the June 6 measure can be done by proxy by 
 
 ## How can I get involved?
 
-- Come to the June 6 meeting at the [Summit at St. Martin's](https://eckingtoncivicassociation.org/meetings-agendas/) (ironically, a building that would never have been built under historic district rules). Alternately, email the ECA to vote by proxy. You must be an ECA member to vote. It costs $10 to join, and [you can do so online](https://eckingtoncivicassociation.org/contact-us/). If you enter your email in the form below, we'll email you a reminder about the meeting. If the $10 joining fee would be a hardship, please email us to let us know.
+- Come to the June 6 meeting at the [Summit at St. Martin's](https://eckingtoncivicassociation.org/meetings-agendas/) (ironically, a building that would never have been built under historic district rules). Alternately, email ECA Treasurer Lana Gowin (lcgowin@gmail.com) to vote by proxy. You must be an ECA member to vote. It costs $10 to join, and [you can do so online](https://eckingtoncivicassociation.org/contact-us/). If you enter your email in the form below, we'll email you a reminder about the meeting. If the $10 joining fee would be a hardship, please email us to let us know.
 
 - If the June 6 measure passes, keep an eye out for the ECA survey. If you send us your email using the form below, we'll email you when the survey is available online so you don't miss it.
 
