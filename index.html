@@ -1,37 +1,41 @@
----
-layout: default
-title: Home
----
-
-<div class="posts">
-  {% for post in paginator.posts %}
-  <article class="post">
-    <h1 class="post-title">
-      <a href="{{ post.url }}">
-        {{ post.title }}
-      </a>
-    </h1>
-
-    <time datetime="{{ post.date | date_to_xmlschema }}" class="post-date">{{ post.date | date_to_string }}</time>
-
-    {{ post.content }}
-  </article>
-  {% endfor %}
-</div>
-
-<div class="pagination">
-  {% if paginator.next_page %}
-    <a class="pagination-item older" href="{{ site.baseurl }}page{{paginator.next_page}}">Older</a>
-  {% else %}
-    <span class="pagination-item older">Older</span>
-  {% endif %}
-  {% if paginator.previous_page %}
-    {% if paginator.page == 2 %}
-      <a class="pagination-item newer" href="{{ site.baseurl }}">Newer</a>
-    {% else %}
-      <a class="pagination-item newer" href="{{ site.baseurl }}page{{paginator.previous_page}}">Newer</a>
-    {% endif %}
-  {% else %}
-    <span class="pagination-item newer">Newer</span>
-  {% endif %}
-</div>
+<!doctype html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.3"></script>
+    </head>
+<body>
+    <script>
+    const treeData = d3.csv("https://sbma44.s3.amazonaws.com/50q/sensors/environment/xmas-tree.csv");
+    treeData.then(function(data) {
+        data = d3.map(data, (d) => {
+            d.dt = new Date((+new Date(d.t)) - (5 * 60 * 60 * 1000));
+            d.tree_water_raw10 = parseFloat(d.tree_water_raw) / 10.0;
+            d.lvng_rm_tmp_f = (d.M_LVNGRM_temperature * 9.0 / 5.0) + 32;
+            d.lvng_rm_humidity = d.M_LVNGRM_humidity;
+            return d;
+        });
+        const data2 = [];
+        data.forEach((d) => {
+            data2.push({dt: d.dt, val: d.tree_water_raw10, type: 'tree_water_raw/10'});
+            data2.push({dt: d.dt, val: d.lvng_rm_tmp_f, type: 'lvngrm_temp_f'});
+            data2.push({dt: d.dt, val: d.lvng_rm_humidity, type: 'lvngrm_humidity_pct'});
+        });
+        document.body.appendChild(Plot.plot({
+            width: window.innerWidth,
+            height: window.innerHeight,
+            color: {
+                legend: true,
+                type: 'categorical'
+            },
+            y: {
+                domain: [0, 100]
+            },
+            marks: [
+                Plot.line(data2, {x: 'dt', y: 'val', stroke: 'type'}),
+                Plot.ruleY([0])
+            ]
+        }));
+    });
+    </script>
+</body></html>
