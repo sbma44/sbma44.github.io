@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.3"></script>
+    </head>
+<body>
+    <script>
+    const treeData = d3.csv("https://sbma44.s3.amazonaws.com/50q/sensors/environment/xmas-tree.csv");
+    treeData.then(function(data) {
+        data = d3.map(data, (d) => {
+            d.dt = new Date((+new Date(d.t)) - (5 * 60 * 60 * 1000));
+            return d;
+        });
+        const data2 = [];
+        data.forEach((d) => {
+            ['nursery', 'kitchen'].forEach((room) => {
+                '_particles_03um _particles_05um _particles_100um _particles_10um _particles_25um _particles_50um _pm100_env _pm100_standard _pm25_env _pm25_standard'.split(' ').forEach((metric) => {
+                    if (d[room + metric])
+                        data2.push({ dt: d.dt, val: d[room + metric], type: room+metric });
+                });
+            });
+        });
+        document.body.appendChild(Plot.plot({
+            width: window.innerWidth,
+            height: window.innerHeight,
+            color: {
+                legend: true,
+                type: 'categorical'
+            },
+            y: {
+                domain: [0, 100]
+            },
+            marks: [
+                Plot.line(data2, {x: 'dt', y: 'val', stroke: 'type'}),
+                Plot.ruleY([0])
+            ]
+        }));
+    });
+    </script>
+</body></html>
