@@ -3,39 +3,81 @@
 <head>
     <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
     <script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.3"></script>
+    <style type="text/css">
+    #graphs {
+        width: 100%;
+        overflow: scroll;
+    }
+    </style>
     </head>
 <body>
+    <div id="controls"></div>
+    <div id="graphs"></div>
     <script>
     const treeData = d3.csv("https://sbma44.s3.amazonaws.com/50q/sensors/environment/xmas-tree.csv");
+    const ROOMS = 'nursery kitchen'.split(' ');
+    const DIMENSIONS = '_particles_03um _particles_05um _particles_100um _particles_10um _particles_25um _particles_50um _pm100_env _pm100_standard _pm25_env _pm25_standard'.split(' ');
+    window.data = null;
+    const controls = document.getElementById('controls');
+    DIMENSIONS.forEach((d) => {
+        const cb = document.createElement('input');
+        cb.type = 'checkbox';
+        cb.checked = true;
+        cb.id = 'checkbox-' + d;
+        cb.addEventListener('change', redraw);
+
+        const wrapper = document.createElement('label');
+        wrapper.appendChild(cb);
+        const span = document.createElement('span');
+        span.innerText = d;
+        wrapper.appendChild(span);
+        controls.appendChild(wrapper);
+    });
+
     treeData.then(function(data) {
-        data = d3.map(data, (d) => {
+        window.data = d3.map(data, (d) => {
             d.dt = new Date((+new Date(d.t)) - (5 * 60 * 60 * 1000));
             return d;
         });
-        const data2 = [];
-        data.forEach((d) => {
-            ['nursery', 'kitchen'].forEach((room) => {
-                '_particles_03um _particles_05um _particles_100um _particles_10um _particles_25um _particles_50um _pm100_env _pm100_standard _pm25_env _pm25_standard'.split(' ').forEach((metric) => {
-                    if (d[room + metric])
+        redraw();
+    });
+
+    function redraw() {
+        const graphs = document.getElementById('graphs');
+        for(let i = graphs.childNodes.length - 1; i >= 0; i--) {
+            graphs.childNodes[i].remove();
+        }
+
+        const activeDimensions = DIMENSIONS.filter(d => document.getElementById('checkbox-' + d).checked);
+
+        ROOMS.forEach((room) => {
+            const data2 = [];
+            let min = 0, max = 0;
+            window.data.forEach((d) => {
+                activeDimensions.forEach((metric) => {
+                    if (d[room + metric]) {
                         data2.push({ dt: d.dt, val: d[room + metric], type: room+metric });
+                        min = Math.min(min, d[room + metric]);
+                        max = Math.max(max, d[room + metric]);
+                    }
                 });
             });
+            graphs.appendChild(Plot.plot({
+                width: window.innerWidth,
+                height: 300,
+                color: {
+                    legend: true,
+                    type: 'categorical'
+                },
+                y: {
+                    domain: [min, max]
+                },
+                marks: [
+                    Plot.line(data2, {x: 'dt', y: 'val', stroke: 'type'}),
+                    Plot.ruleY([0])
+                ]
+            }));
         });
-        document.body.appendChild(Plot.plot({
-            width: window.innerWidth,
-            height: window.innerHeight,
-            color: {
-                legend: true,
-                type: 'categorical'
-            },
-            y: {
-                domain: [0, 100]
-            },
-            marks: [
-                Plot.line(data2, {x: 'dt', y: 'val', stroke: 'type'}),
-                Plot.ruleY([0])
-            ]
-        }));
-    });
+    }
     </script>
 </body></html>
