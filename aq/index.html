@@ -8,6 +8,9 @@
         width: 100%;
         overflow: scroll;
     }
+    #graphs svg {
+        max-width: none;
+    }
     </style>
     </head>
 <body>
@@ -16,7 +19,7 @@
     <script>
     const treeData = d3.csv("https://sbma44.s3.amazonaws.com/50q/sensors/environment/xmas-tree.csv");
     const ROOMS = 'nursery kitchen'.split(' ');
-    const DIMENSIONS = '_particles_03um _particles_05um _particles_100um _particles_10um _particles_25um _particles_50um _pm100_env _pm100_standard _pm25_env _pm25_standard'.split(' ');
+    const DIMENSIONS = '_particles_03um _particles_05um _particles_100um _particles_10um _particles_25um _particles_50um _pm100_env _pm100_standard _pm25_env _pm25_standard office_co2_ppm'.split(' ');
     window.data = null;
     const controls = document.getElementById('controls');
     DIMENSIONS.forEach((d) => {
@@ -50,20 +53,23 @@
 
         const activeDimensions = DIMENSIONS.filter(d => document.getElementById('checkbox-' + d).checked);
 
+        var maxWidth = window.innerWidth;
         ROOMS.forEach((room) => {
             const data2 = [];
             let min = 0, max = 0;
             window.data.forEach((d) => {
                 activeDimensions.forEach((metric) => {
-                    if (d[room + metric]) {
-                        data2.push({ dt: d.dt, val: d[room + metric], type: room+metric });
-                        min = Math.min(min, d[room + metric]);
-                        max = Math.max(max, d[room + metric]);
+                    const m = metric[0] == '_' ? (room + metric) : metric;
+                    if (d[m]) {
+                        data2.push({ dt: d.dt, val: d[m], type: m });
+                        min = Math.min(min, d[m]);
+                        max = Math.max(max, d[m]);
                     }
                 });
             });
+            maxWidth = data2.length / 3;
             graphs.appendChild(Plot.plot({
-                width: window.innerWidth,
+                width: maxWidth,
                 height: 300,
                 color: {
                     legend: true,
@@ -78,6 +84,7 @@
                 ]
             }));
         });
+        graphs.scrollLeft = maxWidth;
     }
     </script>
 </body></html>
