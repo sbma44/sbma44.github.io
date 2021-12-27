@@ -21,13 +21,21 @@
     const ROOMS = 'nursery kitchen'.split(' ');
     const DIMENSIONS = '_particles_03um _particles_05um _particles_100um _particles_10um _particles_25um _particles_50um _pm100_env _pm100_standard _pm25_env _pm25_standard office_co2_ppm'.split(' ');
     window.data = null;
+    window.aqSettings = JSON.parse(window.localStorage.getItem('aq') || '{}');
     const controls = document.getElementById('controls');
     DIMENSIONS.forEach((d) => {
         const cb = document.createElement('input');
         cb.type = 'checkbox';
-        cb.checked = true;
         cb.id = 'checkbox-' + d;
-        cb.addEventListener('change', redraw);
+        if (window.aqSettings[cb.id] === undefined)
+            cb.checked = true;
+        else
+            cb.checked = !!window.aqSettings[cb.id];
+        cb.addEventListener('change', (e) => {
+            window.aqSettings[e.target.id] = e.target.checked;
+            window.localStorage.setItem('aq', JSON.stringify(window.aqSettings));
+            redraw();
+        });
 
         const wrapper = document.createElement('label');
         wrapper.appendChild(cb);
