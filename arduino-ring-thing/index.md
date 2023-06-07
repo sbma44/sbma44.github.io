@@ -21,7 +21,7 @@ To show it off and provide a sample implementation, I have coded up an example s
 1. Check out the [Arduino code](mapbox_conf_sign.ino.txt)
 2. Get your Arduino environment [set up for the ESP8266 chip family](https://arduino-esp8266.readthedocs.io/en/latest/installing.html).
 3. Adapt the code to [join your preferred wifi network](https://www.learnrobotics.org/blog/connect-esp8266-wifi/) instead of making its own
-4. Flash the new program to the Arduino
+4. Flash the new program to the Arduino (ok, technically it is an wifi-equipped Arduino clone, not a real Arduino--its proper name is `Wemos D1 R1`)
 5. Figure out a way to give the Arduino a static IP (probably via your router's admin interface)
 5. Issue HTTP commands to set pixels, e.g. `curl http://192.168.1.123/led?n=0&r=255&g=128&b=0`
 
