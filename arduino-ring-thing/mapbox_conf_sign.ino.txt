@@ -1,0 +1,157 @@
+#include <Arduino.h>
+#include <FS.h>
+#include <ESP8266WiFi.h>
+#include <ESP8266WebServer.h>
+#include <Adafruit_NeoPixel.h>
+
+#define NEOPIN D6
+#define NEOPIXEL_LENGTH 24
+#define NEOPIXEL_OFFSET -3
+#define BRIGHTNESS 24 // set max brightness (0-255)
+
+Adafruit_NeoPixel strip = Adafruit_NeoPixel(NEOPIXEL_LENGTH, NEOPIN, NEO_GRB + NEO_KHZ800); // strip object
+ESP8266WebServer server(80);
+
+unsigned long last = 0;
+byte pixels[NEOPIXEL_LENGTH * 3];
+
+// Fill the dots one after the other with a color
+void colorWipe(uint32_t c, uint8_t wait, bool alternating) {
+  uint32_t blank = strip.Color(0, 0, 0);
+  for(uint16_t i=0; i<strip.numPixels(); i++) {
+    if (alternating && ((i%2) == 0)) {
+      strip.setPixelColor((i + NEOPIXEL_LENGTH + NEOPIXEL_OFFSET) % NEOPIXEL_LENGTH, blank);
+    }
+    else {
+      strip.setPixelColor((i + NEOPIXEL_LENGTH + NEOPIXEL_OFFSET) % NEOPIXEL_LENGTH, c);
+    }
+    strip.show();
+    delay(wait);
+  }
+}
+
+String buildStatusString() {
+  String out = "[";
+  for (int i=0;i<NEOPIXEL_LENGTH; i++) {
+    int offset = i * 3;
+    if (i > 0) {
+      out += ", ";
+    }
+    out += "[" + String(pixels[offset]) + "," + String(pixels[offset + 1]) + "," + String(pixels[offset + 2]) + "]";
+  }
+  out += "]";
+  return out;
+}
+
+void handleStatus() {
+  String out = buildStatusString(); 
+  if (server.argName(0) == "jsonp") {
+    out = server.arg(0) + " = " + out + ";";
+  }
+  server.sendHeader("Cache-Control", "no-cache");
+  server.send(200, "text/javascript; charset=utf-8", out);
+}
+
+void handleIndex() {
+  File f = SPIFFS.open("/index.html", "r");
+  if (!f) {
+    Serial.println("file open failed");
+    server.send(500, "text/html; charset=utf-8", "failed to open file");
+  }
+  else {
+    server.sendHeader("Cache-Control", "no-cache");
+    server.send(200, "text/html; charset=utf-8", f.readString());
+    f.close();
+  }
+}
+
+void handleLED() {
+  byte r = 255;
+  byte b = 255;
+  byte g = 255;
+  int n = 0;
+  for (int i = 0; i < server.args(); i++) {   
+    if (server.argName(i) == "r") {
+      r = atoi(server.arg(i).c_str());
+    }
+    else if (server.argName(i) == "g") {
+      g = atoi(server.arg(i).c_str());
+    }
+    else if (server.argName(i) == "b") {
+      b = atoi(server.arg(i).c_str());
+    }
+    else if (server.argName(i) == "n") {
+      n = atoi(server.arg(i).c_str());
+    }
+  }
+
+  Serial.print("setting RGB value:");
+  Serial.print(n);
+  Serial.print(",");
+  Serial.print(r);
+  Serial.print(",");
+  Serial.print(g);
+  Serial.print(",");
+  Serial.println(b);
+
+  pixels[(n*3)] = r;
+  pixels[(n*3) + 1] = g;
+  pixels[(n*3) + 2] = b;
+
+  server.sendHeader("Cache-Control", "no-cache");
+  server.send(200, "text/javascript; charset=utf-8", "{\"status\": " + buildStatusString() + "}");
+}
+
+void setup() {
+  Serial.begin(115200);
+
+  // initialize file system
+  if(SPIFFS.begin())
+  {
+    Serial.println("SPIFFS Initialize....ok");
+  }
+  else
+  {
+    Serial.println("SPIFFS Initialization...failed");
+  }
+
+  // start wifi access point
+  WiFi.softAP("Hello legal team");
+
+  // initialize pixel array to zeros
+  for(int i=0;i<NEOPIXEL_LENGTH * 3;i++) {
+    pixels[i] = 0;
+  }
+
+  // set up LED ring
+  pinMode(NEOPIN, OUTPUT);
+  strip.begin();
+  strip.show();
+  strip.setBrightness(BRIGHTNESS);
+  colorWipe(strip.Color(0, 255, 0), 20, false); // Green
+  delay(500);
+
+
+
+  // add handler for custom /led endpoint
+  server.enableCORS(true);
+  server.on("/", HTTP_GET, handleIndex);
+  server.on("/status", HTTP_GET, handleStatus);
+  server.on("/led", HTTP_GET, handleLED);
+  server.begin();
+}
+
+void loop() {
+  // let the http server handle any business it has
+  server.handleClient();
+  
+  // only update the strip every 100ms
+  if (millis() - last > 100) {
+    // copy pixel buffer contents onto the strip
+    for (int i=0; i < NEOPIXEL_LENGTH; i++) {
+      strip.setPixelColor((i + NEOPIXEL_LENGTH + NEOPIXEL_OFFSET) % NEOPIXEL_LENGTH, strip.Color(pixels[i*3], pixels[(i*3)+1], pixels[(i*3)+2]));
+    }
+    strip.show();
+    last = millis();
+  }
+}

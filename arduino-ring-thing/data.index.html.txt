@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Adam Arduino demo thingy</title>
+        <style>
+            .swatch {
+                display: block;
+                float: left;
+                margin-right: 0.5em;
+                width: 80px;
+                height: 80px;
+                border-width: 5px;
+                border-color: white;
+                border-style: solid;
+            }
+            .swatch.active {
+                border-style: dashed;
+                border-color: black;
+            }
+            #container {
+                position: absolute;
+                height: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            // function to take an array of pixel values and set our circles to the correct colors
+            var pixels = null;
+            function processPixels(p) {
+                p.forEach((pixel, n) => {
+                    const circle = document.getElementById(`circle${n}`);
+                    circle.setAttributeNS(null, 'style', `fill: rgb(${pixel.join(',')})` );
+                });
+            }
+        </script>
+
+        <!-- do people still use JSONP? well, we are, to get the current state of the pixels when this page loads -->
+        <script src="/status?jsonp=pixels"></script>
+
+
+        <div id="swatchContainer"></div>
+        <div style="clear: left"></div>
+        <svg id="container" width="100%" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <defs>
+            <style type="text/css">
+                circle {
+                    stroke: black;
+                    stroke-width: 3px;
+                }
+            </style>
+        </defs>
+        </svg>
+        <script>
+        const size = Math.min(window.innerWidth, window.innerHeight - 200);
+
+        // draw some clickable swatches to set the correct active color
+        var possibleColors = [
+            [255, 0, 0], // red
+            [255, 127, 0],
+            [255, 255, 0],
+            [127, 255, 0],
+            [0, 255, 0],
+            [0, 255, 127],
+            [0, 255, 255],
+            [0, 127, 255],
+            [0, 0, 255],
+            [127, 0, 255],
+            [255, 0, 255],
+            [255, 0, 127]
+        ];
+        possibleColors.forEach((c, i) => {
+            const d = document.createElement('div');
+            d.id = `swatch${i}`;
+            d.className = (i === 0) ? 'swatch active' : 'swatch';
+            d.style.backgroundColor = `rgb(${c.join(',')})`;
+            d.setAttribute('rel', c.join(','));
+            d.addEventListener('click', function() {
+                currentColor = this.getAttribute('rel').split(',').map((c) => parseInt(c));
+                possibleColors.forEach((c, i) => {
+                    const s = document.getElementById(`swatch${i}`);
+                    s.className = (s.getAttribute('rel') === currentColor.join(',')) ? 'swatch active' : 'swatch';
+                });
+            });
+            document.getElementById('swatchContainer').appendChild(d);
+        });
+
+        var currentColor = [255, 0, 0];
+
+        // fire off a request indicating the circle number and its desired color
+        // we should get back the current state of all pixels, which we then update
+        function sendAjaxGetRequest(circle) {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (xmlhttp.readyState == XMLHttpRequest.DONE ) {
+                    if (xmlhttp.status == 200) {
+                        circle.setAttributeNS(null, 'style', `fill: rgb(${currentColor.join(',')})` );
+                        pixels = JSON.parse(xmlhttp.responseText).status;
+                        processPixels(pixels);
+                    }
+                    else {
+                        circle.setAttributeNS(null, 'style', `fill: rgb(${currentColor.join(',')})` );
+                        console.log(`There was an error ${xmlhttp.status}`);
+                    }
+                }
+            };
+            xmlhttp.open('GET', `/led?n=${circle.getAttribute('rel')}&r=${currentColor[0]}&g=${currentColor[1]}&b=${currentColor[2]}`, true);
+            xmlhttp.send();
+        }
+
+        // draw some circles
+        var svgns = "http://www.w3.org/2000/svg",
+            container = document.getElementById('container');
+        for (let i=0; i<24; i++) {
+            // figure out reasonable size & position based on screen size
+            let radians = (i / 24) * 2 * Math.PI;
+            let x = (0.5 * size) + ((0.4 * size) * Math.cos(radians));
+            let y = (0.5 * window.innerHeight) + ((0.4 * size) * Math.sin(radians));
+
+            // create an SVG circle element
+            var circle = document.createElementNS(svgns, 'circle');
+
+            // set the circle's identity so we can keep track of it
+            circle.id = `circle${i}`;
+            circle.setAttribute('rel', i);
+
+            // set location, radius, fill
+            circle.setAttributeNS(null, 'cx', x);
+            circle.setAttributeNS(null, 'cy', y);
+            circle.setAttributeNS(null, 'r', 0.02 * size);
+            circle.setAttributeNS(null, 'style', 'fill: gray' );
+
+            // add a click handler
+            circle.addEventListener('click', function() {
+                sendAjaxGetRequest(this); // we should really specify a callback here, but... eh
+            });
+
+            // add circle to the container
+            container.appendChild(circle);
+        }
+
+        // if we successfully got the pixel state, set the circles to the correct colors
+        if (pixels) {
+            processPixels(pixels);
+        }
+        </script>
+    </body>
+</html>
