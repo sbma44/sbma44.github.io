@@ -3,18 +3,18 @@ I promised some microcontroller bits and bobs at the next legal offsite. Alas, I
 
 This little device is actually a (very) minor piece of Mapbox history: back in the garage days our growing numbers meant that leadership developed an increasingly bad habit of seizing our very limited conference rooms for ad-hoc calls when other people had booked them. In a fit of passive aggressive inspiration, I built these little ring light LED status indicators to dissuade people from doing this right before a meeting was scheduled to start.
 
-One of these sat atop each room's doorway and would read the room's shared calendar and provide a status indication showing whether it was free for use or had something coming up--and include some clues about how bump-able the meeting might be. It is all more or less documented in [this repo](https://github.com/mapbox/conference-room-sign).
+One of these sat atop each room's doorway and would read the room's shared calendar and provide a status indication showing whether it was free for use or had something coming up--and include some clues about how bump-able the meeting might be. [It is all more or less documented in this repo](https://github.com/mapbox/conference-room-sign).
 
-As you can imagine, only about 2 other people bothered to learn what the colors meant, the system was ignored, and pretty soon we moved. Oh well! I hope the hardware can now go to a good home.
+As you might imagine, only about 2 other people bothered to learn what the colors meant, the system was ignored, and pretty soon we moved. Oh well! I hope the hardware can now go to a good home.
 
 To show it off and provide a sample implementation, I have coded up an example sketch to set the colors. My aim was to make something that could be turned into a useful display for your raspberry pi projects without a ton of customization. HTTP calls to set individual LEDs is not _really_ the right way to control a display like this. But it should be quite easy to hook up to whatever fun thing you're doing with your Pi.
 
 ## Steps for playing around with this:
 
-1. Plug it in
+1. Plug it in, wait for the green animation to appear
 2. Join the "hello legal team" wifi network
-3. Point your browser at `http://192.168.4.1/` -- note that's HTTP, *not* HTTPS
-4. Use the UI to set pixels. Fun!(?). Look at the network inspector in your browser to see how the thing is being controlled by your browser.
+3. Point your browser at [http://192.168.4.1/](http://192.168.4.1/) -- note that's HTTP, *not* HTTPS
+4. Use the UI to set pixels. Fun!(?). Look at the browser network inspector to see how the thing is being controlled.
 
 ## To customize it for your own use:
 
@@ -29,9 +29,9 @@ The HTML interface is stored on the device using a now-deprecated technology cal
 
 ## Other stuff in the package
 I included some components I had lying around:
-- a strip of WS2812s, aka neopixels. These work the same as the LED ring, they're just in a different form factor. You will probably need an external power supply if you want to run all of them, though--don't ask too much of your computer's USB bus!
+- a strip of WS2812s, aka neopixels. These work the same as the LED ring, they're just in a different form factor. You will probably need an external power supply if you want to light up more than a couple dozen at once, though (your computer may freak out if you ask its USB bus for too much juice).
 - an ESP32, the newer cousin of the ESP8266, for when you want to add Bluetooth to the equation (this one has a camera module that I've never tried)
 - a [tiny monochrome OLED display](https://www.instructables.com/Monochrome-096-i2c-OLED-display-with-arduino-SSD13/)
 - a servo, for the visceral thrill of things moving (I have never found a real use for one)
-- a GPS module. we work for a mapping company, after all.
-- a breadboard, for wiring it all up
+- a GPS module. we work for a mapping company, after all. good chance to learn how serial communication works, which is probably what you'll want to base most of your Arduino/Pi frankensteins on
+- a breadboard and some hookup wire, for connecting it all up
