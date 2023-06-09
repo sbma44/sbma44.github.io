@@ -1,7 +1,7 @@
 # Arduino thingy
 I promised some microcontroller bits and bobs at the next legal offsite. Alas, I'm sitting this one out. But I thought I'd try to deliver the gadgetry anyway.
 
-This little device is actually a (very) minor piece of Mapbox history: back in the garage days our growing numbers meant that leadership developed an increasingly bad habit of seizing our very limited conference rooms for ad-hoc calls when other people had booked them. In a fit of passive aggressive inspiration, I built these little ring light LED status indicators to dissuade people from doing this right before a meeting was scheduled to start.
+The device with the circular LED display and the `dc_large_conf` label on its back is actually a (very) minor piece of Mapbox history: back in the garage days our growing numbers meant that some folks developed an increasingly bad habit of seizing our very limited conference rooms for ad-hoc calls when other people had booked them. In a fit of passive aggressive inspiration, I built these little ring light LED status indicators to dissuade people from doing this right before a meeting was scheduled to start.
 
 One of these sat atop each room's doorway and would read the room's shared calendar and provide a status indication showing whether it was free for use or had something coming up--and include some clues about how bump-able the meeting might be. [It is all more or less documented in this repo](https://github.com/mapbox/conference-room-sign).
 
@@ -28,7 +28,7 @@ To show it off and provide a sample implementation, I have coded up an example s
 The HTML interface is stored on the device using a now-deprecated technology called SPIFFS. You can have a look at it by using `View Source` in your browser if it's of interest, or by clicking [here](data.index.html.txt).
 
 ## Other stuff in the package
-I included some components I had lying around:
+I included some components I had lying around which I hope you will either enjoy or pass along to someone who'll find them intriguing:
 - a strip of WS2812s, aka neopixels. These work the same as the LED ring, they're just in a different form factor. You will probably need an external power supply if you want to light up more than a couple dozen at once, though (your computer may freak out if you ask its USB bus for too much juice).
 - an ESP32, the newer cousin of the ESP8266, for when you want to add Bluetooth to the equation (this one has a camera module that I've never tried)
 - a [tiny monochrome OLED display](https://www.instructables.com/Monochrome-096-i2c-OLED-display-with-arduino-SSD13/)
