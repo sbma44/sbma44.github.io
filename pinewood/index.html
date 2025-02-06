@@ -5,12 +5,137 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pinewood Derby Scheduler</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+       <style>
+        /* Solid Colors */
+        .muted-red { background-color: #F28B82; color: black; }
+        .muted-orange { background-color: #FBCB83; color: black; }
+        .muted-yellow { background-color: #FFF475; color: black; }
+        .muted-green { background-color: #CCFF90; color: black; }
+        .muted-teal { background-color: #A7FFEB; color: black; }
+        .muted-blue { background-color: #CBF0F8; color: black; }
+        .muted-purple { background-color: #D7AEFB; color: black; }
+        .muted-pink { background-color: #FDCFE8; color: black; }
+        .muted-lime { background-color: #D9F99D; color: black; }
+        .muted-cyan { background-color: #A5F3FC; color: black; }
+
+        /* Striped Versions */
+        .muted-red-striped {
+            background: repeating-linear-gradient(
+                135deg,
+                #F28B82,
+                #F28B82 10px,
+                #FFFFFF 10px,
+                #FFFFFF 20px
+            );
+            color: black;
+        }
+        .muted-orange-striped {
+            background: repeating-linear-gradient(
+                135deg,
+                #FBCB83,
+                #FBCB83 10px,
+                #FFFFFF 10px,
+                #FFFFFF 20px
+            );
+            color: black;
+        }
+        .muted-yellow-striped {
+            background: repeating-linear-gradient(
+                135deg,
+                #FFF475,
+                #FFF475 10px,
+                #FFFFFF 10px,
+                #FFFFFF 20px
+            );
+            color: black;
+        }
+        .muted-green-striped {
+            background: repeating-linear-gradient(
+                135deg,
+                #CCFF90,
+                #CCFF90 10px,
+                #FFFFFF 10px,
+                #FFFFFF 20px
+            );
+            color: black;
+        }
+        .muted-teal-striped {
+            background: repeating-linear-gradient(
+                135deg,
+                #A7FFEB,
+                #A7FFEB 10px,
+                #FFFFFF 10px,
+                #FFFFFF 20px
+            );
+            color: black;
+        }
+        .muted-blue-striped {
+            background: repeating-linear-gradient(
+                135deg,
+                #CBF0F8,
+                #CBF0F8 10px,
+                #FFFFFF 10px,
+                #FFFFFF 20px
+            );
+            color: black;
+        }
+        .muted-purple-striped {
+            background: repeating-linear-gradient(
+                135deg,
+                #D7AEFB,
+                #D7AEFB 10px,
+                #FFFFFF 10px,
+                #FFFFFF 20px
+            );
+            color: black;
+        }
+        .muted-pink-striped {
+            background: repeating-linear-gradient(
+                135deg,
+                #FDCFE8,
+                #FDCFE8 10px,
+                #FFFFFF 10px,
+                #FFFFFF 20px
+            );
+            color: black;
+        }
+        .muted-lime-striped {
+            background: repeating-linear-gradient(
+                135deg,
+                #D9F99D,
+                #D9F99D 10px,
+                #FFFFFF 10px,
+                #FFFFFF 20px
+            );
+            color: black;
+        }
+        .muted-cyan-striped {
+            background: repeating-linear-gradient(
+                135deg,
+                #A5F3FC,
+                #A5F3FC 10px,
+                #FFFFFF 10px,
+                #FFFFFF 20px
+            );
+            color: black;
+        }
+
+        /* Gray "Bye" Cells */
+        .bye-cell {
+            background-color: #E5E7EB;
+            color: #9CA3AF;
+            font-style: italic;
+        }
+    </style>
+    </style>
 </head>
 <body class="bg-gray-100 p-6">
     <div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-md">
         <h1 class="text-2xl font-bold mb-4">Pack 1 Pinewood Derby Scheduler</h1>
 
-        <p>This tool accepts CSV input (copied/pasted from Google Sheets, for instance) and schedules race heats in a format suitable for import to the pack's Pinewood Derby race day software. It's designed to ensure every car races a set number of times, while optimizing for inside lane use when not all lanes are active. Please be sure that the CSV content you use as input includes headers for columns named "Subgroup" and "Car#". "Subgroup" should typically be the car creator's den (e.g. "Lion", "Webelos"). "Car#" should be unique.</p>
+        <p class="mb-4">This tool accepts CSV input (copied/pasted from Google Sheets, for instance) and schedules race heats in a format suitable for import to the pack's Pinewood Derby race day software. It's designed to ensure every car races a set number of times, while optimizing for inside lane use when not all lanes are active and for avoiding having the same car in consecutive heats (allowing faster resets).</p>
+        <p class="mb-4">Please be sure that the CSV content you use as input includes headers for columns named "Subgroup" and "Car#". "Subgroup" should typically be the car creator's den (e.g. "Lion", "Webelos"). "Car#" should be unique.</p>
 
         <label class="block font-semibold mb-2">Input CSV (Copy/Paste):</label>
         <textarea id="inputCsv" class="w-full h-32 p-2 border border-gray-300 rounded-md"></textarea>
@@ -48,7 +173,7 @@
 
     <script>
         function parseCsv(text) {
-            let rows = text.trim().split("\n").map(row => row.split(","));
+            let rows = text.trim().split("\n").map(row => row.split(/[,\t]/));
             let headers = rows.shift();
             return rows.map(row => Object.fromEntries(headers.map((h, i) => [h.trim(), row[i]?.trim()])));
         }
@@ -66,31 +191,56 @@
         function makeRaces(den, minHeats, laneCount) {
             den.sort((a, b) => a['Car#'].localeCompare(b['Car#']));
             let carNumbers = den.map(x => x['Car#']);
-            let offset = 0, raceCount = Object.fromEntries(carNumbers.map(cn => [cn, 0]));
+            let offset = 0, heatNum = 0, raceCount = Object.fromEntries(carNumbers.map(cn => [cn, 0]));
             let heats = [], remainingRacers = [...carNumbers];
 
             while (remainingRacers.length) {
                 let rowCars = [];
-                for (let i = 0; i < Math.min(laneCount, remainingRacers.length); i++) {
-                    let cn = remainingRacers[(i + offset) % remainingRacers.length];
+                let thisHeatCars = remainingRacers.slice(0, laneCount);
+                thisHeatCars.sort((a, b) => parseInt(a) - parseInt(b));
+
+                // only update the offset if one or more cars has raced before
+                if ((heatNum > 0) && (thisHeatCars.some(cn => (raceCount[cn] > 0))))
+                    offset++;
+
+                for (let i = 0; i < thisHeatCars.length; i++) {
+                    let cn = thisHeatCars[(i + offset) % thisHeatCars.length];
                     rowCars.push(cn);
                     raceCount[cn]++;
                 }
 
                 let row = distributeLanes(rowCars, laneCount);
                 heats.push([den[0]['Subgroup'], ...row]);
-                offset++;
 
                 remainingRacers = carNumbers.filter(x => raceCount[x] < minHeats);
+
+                // deprioritize the cars that have been raced most recently, then the ones that have been raced most
+                let racerSort = new Array(remainingRacers.length);
+                remainingRacers.forEach((r, i) => {
+                    let wasInLastHeat = (row.indexOf(r) !== -1) ? remainingRacers.length : 0;
+                    racerSort[i] = {
+                        car: r,
+                        sortIndex: wasInLastHeat + raceCount[r]
+                    };
+                });
+                // sort remainingRacers by the values in racerSort, in ascending order
+                racerSort.sort((a, b) => a.sortIndex - b.sortIndex);
+
+                remainingRacers = racerSort.map(x => x.car);
+
+                heatNum++;
             }
             return heats;
         }
 
-        function processCsv() {
-            let inputCsv = document.getElementById("inputCsv").value;
+        function processCsv(inputCsv) {
+            if (!inputCsv)
+                inputCsv = document.getElementById("inputCsv").value;
+
+
             let laneCount = parseInt(document.getElementById("laneCount").value);
             let minHeats = parseInt(document.getElementById("minHeats").value);
-            
+
             let data = parseCsv(inputCsv);
             let dens = data.reduce((acc, row) => {
                 (acc[row['Subgroup']] = acc[row['Subgroup']] || []).push(row);
@@ -105,16 +255,30 @@
             displayOutput(heats, laneCount);
         }
 
+        function getColorClass(value) {
+            if (value === "Bye") return "bye-cell"; // Gray out "Bye" cells
+
+            const colors = ['muted-red', 'muted-orange', 'muted-yellow', 'muted-green', 'muted-teal', 'muted-blue', 'muted-purple', 'muted-pink'];
+            let colorLength = colors.length;
+            for (let i = 0; i < colorLength; i++) {
+                colors.push(`${colors[i]}-striped`);
+            }
+            const numericPart = parseInt(value.replace(/\D/g, ''), 10); // Extract digits for modulus
+            const index = numericPart % colors.length;
+            return colors[index];
+        }
+
         function displayOutput(heats, laneCount) {
             let preview = document.getElementById("outputPreview");
-            let outputData = [['Lane 1', ...Array.from({length: laneCount - 1}, (_, i) => `Lane ${i+2}`)]];
-            let csvData = [];
+            let csvData = [['Lane 1', ...Array.from({length: laneCount - 1}, (_, i) => `Lane ${i+2}`)]];
 
             preview.innerHTML = `<table class="min-w-full bg-white border border-gray-300 text-sm">
-                ${heats.map(row => {
+                ${csvData.map(row => `<tr>${row.map(cell => `<th class="border px-2 py-1">${cell}</th>`).join('')}</tr>`).join('')}
+                ${heats.map((row, i) => {
                     let lanesOnly = row.slice(1);
                     csvData.push(lanesOnly);
-                    return `<tr>${lanesOnly.map(cell => `<td class="border px-2 py-1">${cell}</td>`).join('')}</tr>`;
+                    let separator = (i === 0) || (heats[i-1][0] !== row[0]) ? `<tr><td colspan="${laneCount}" class="border px-2 py-1 font-semibold">${row[0]}</td></tr>` : '';
+                    return `${separator}<tr>${lanesOnly.map(cell => `<td class="border px-2 py-1 ${getColorClass(cell)}">${cell}</td>`).join('')}</tr>`;
                 }).join('')}
             </table>`;
 
