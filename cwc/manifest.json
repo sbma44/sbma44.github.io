@@ -2,14 +2,14 @@
   "name": "Civil War Century Routes",
   "short_name": "CWC Routes",
   "description": "Interactive map of Civil War Century cycling routes",
-  "start_url": "/",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#3b82f6",
   "orientation": "any",
   "icons": [
     {
-      "src": "/vite.svg",
+      "src": "./vite.svg",
       "sizes": "any",
       "type": "image/svg+xml"
     }

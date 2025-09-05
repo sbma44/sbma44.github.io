@@ -1,10 +1,12 @@
 const CACHE_NAME = 'civil-war-century-v1';
+
+// Get the base path from the current script location
+const scriptURL = new URL(self.location);
+const basePath = scriptURL.pathname.substring(0, scriptURL.pathname.lastIndexOf('/') + 1);
+
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/src/main.js',
-  '/src/style.css',
-  '/src/data/routes.js',
+  basePath,
+  `${basePath}index.html`,
   'https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.css',
   'https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.js'
 ];
