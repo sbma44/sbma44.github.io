@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <title>Civil War Century Routes</title>
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#3b82f6">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.0.1/mapbox-gl.css" rel="stylesheet">
+    <script type="module" crossorigin src="/index.BYkS67D7.js"></script>
+    <link rel="stylesheet" crossorigin href="/index.D_eMg9m0.css">
+  </head>
+  <body>
+    <div id="app">
+      <div id="map"></div>
+      <div id="route-labels">
+        <div class="route-label" data-route="Half">
+          <span class="color-indicator red"></span>
+          Half
+        </div>
+        <div class="route-label" data-route="Metric">
+          <span class="color-indicator yellow"></span>
+          Metric
+        </div>
+        <div class="route-label" data-route="Quarter">
+          <span class="color-indicator blue"></span>
+          Quarter
+        </div>
+      </div>
+      <button id="location-btn" class="location-button" title="Show my location">
+        📍
+      </button>
+    </div>
+  </body>
+</html>
